@@ -1,4 +1,4 @@
-package model;
+package com.joango.model;
 
 /**
  * Created by maksym_govorischev.

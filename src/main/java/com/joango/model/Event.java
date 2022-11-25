@@ -1,4 +1,4 @@
-package model;
+package com.joango.model;
 
 import java.util.Date;
 
