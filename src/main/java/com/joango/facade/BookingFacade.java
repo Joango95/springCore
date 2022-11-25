@@ -1,8 +1,8 @@
-package facade;
+package com.joango.facade;
 
-import model.Event;
-import model.Ticket;
-import model.User;
+import com.joango.model.Event;
+import com.joango.model.Ticket;
+import com.joango.model.User;
 
 import java.util.Date;
 import java.util.List;
