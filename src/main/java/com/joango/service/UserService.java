@@ -1,11 +1,13 @@
 package com.joango.service;
 
+import com.joango.model.DTO.UserDTO;
 import com.joango.model.User;
-import com.joango.repository.userRepository.UserRepository;
+import com.joango.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -13,28 +15,28 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User getUserById(long userId) {
-        return userRepository.getUserById(userId);
+    public Optional<User> getUserById(Long userId) {
+        return userRepository.findById(userId);
     }
 
-    public User getUserByEmail(String email) {
+    public Optional <User> getUserByEmail(String email) {
         return userRepository.getUserByEmail(email);
     }
 
-    public List<User> getUsersByName(String name, int pageSize, int pageNum) {
-        return userRepository.getUsersByName(name, pageSize, pageNum);
+    public List<User> getUsersByName(String name) {
+        return userRepository.getUserByName(name);
     }
 
     public User createUser(User user) {
-        return userRepository.createUser(user);
+        return userRepository.save(user);
     }
 
     public User updateUser(User user) {
-        return userRepository.updateUser(user);
+        return userRepository.save(user);
     }
 
-    public Boolean deleteUser(long userId) {
-        return userRepository.deleteUser(userId);
+    public void deleteUser(long userId) {
+         userRepository.deleteById(userId);
     }
 
 }

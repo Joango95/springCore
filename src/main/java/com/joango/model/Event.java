@@ -1,19 +1,23 @@
 package com.joango.model;
 
+import lombok.Data;
+
+import javax.persistence.*;
 import java.util.Date;
 
-/**
- * Created by maksym_govorischev.
- */
-public interface Event {
-    /**
-     * Event id. UNIQUE.
-     * @return Event Id
-     */
-    long getId();
-    void setId(long id);
-    String getTitle();
-    void setTitle(String title);
-    Date getDate();
-    void setDate(Date date);
+@Data
+@Entity
+@Table(name = "EVENT")
+public class Event {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private Long id;
+
+    @Column(name = "title")
+    private String title;
+
+    @Column(name = "DATE")
+    private Date date;
 }

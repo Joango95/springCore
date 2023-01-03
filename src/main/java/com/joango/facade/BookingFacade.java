@@ -1,8 +1,9 @@
 package com.joango.facade;
 
-import com.joango.model.Event;
-import com.joango.model.Ticket;
-import com.joango.model.User;
+import com.joango.model.Category;
+import com.joango.model.DTO.EventDTO;
+import com.joango.model.DTO.TicketDTO;
+import com.joango.model.DTO.UserDTO;
 
 import java.util.Date;
 import java.util.List;
@@ -17,91 +18,87 @@ public interface BookingFacade {
      * Gets event by its id.
      * @return Event.
      */
-    Event getEventById(long eventId);
+    EventDTO getEventById(long eventId);
 
     /**
      * Get list of events by matching title. Title is matched using 'contains' approach.
      * In case nothing was found, empty list is returned.
      * @param title Event title or it's part.
-     * @param pageSize Pagination param. Number of events to return on a page.
-     * @param pageNum Pagination param. Number of the page to return. Starts from 1.
      * @return List of events.
      */
-    List<Event> getEventsByTitle(String title, int pageSize, int pageNum);
+    List<EventDTO> getEventsByTitle(String title);
 
     /**
      * Get list of events for specified day.
      * In case nothing was found, empty list is returned.
      * @param day Date object from which day information is extracted.
-     * @param pageSize Pagination param. Number of events to return on a page.
-     * @param pageNum Pagination param. Number of the page to return. Starts from 1.
      * @return List of events.
      */
-    List<Event> getEventsForDay(Date day, int pageSize, int pageNum);
+    List<EventDTO> getEventsForDay(Date day);
 
     /**
      * Creates new event. Event id should be auto-generated.
      * @param event Event data.
      * @return Created Event object.
      */
-    Event createEvent(Event event);
+    EventDTO createEvent(EventDTO event);
 
     /**
      * Updates event using given data.
      * @param event Event data for update. Should have id set.
      * @return Updated Event object.
      */
-    Event updateEvent(Event event);
+    EventDTO updateEvent(EventDTO event);
 
     /**
      * Deletes event by its id.
      * @param eventId Event id.
      * @return Flag that shows whether event has been deleted.
      */
-    boolean deleteEvent(long eventId);
+    void deleteEvent(long eventId);
 
     /**
      * Gets user by its id.
      * @return User.
      */
-    User getUserById(long userId);
+    UserDTO getUserById(long userId);
 
     /**
      * Gets user by its email. Email is strictly matched.
      * @return User.
      */
-    User getUserByEmail(String email);
+    UserDTO getUserByEmail(String email);
 
     /**
      * Get list of users by matching name. Name is matched using 'contains' approach.
      * In case nothing was found, empty list is returned.
      * @param name Users name or it's part.
-     * @param pageSize Pagination param. Number of users to return on a page.
-     * @param pageNum Pagination param. Number of the page to return. Starts from 1.
      * @return List of users.
      */
-    List<User> getUsersByName(String name, int pageSize, int pageNum);
+    List<UserDTO> getUsersByName(String name);
 
     /**
      * Creates new user. User id should be auto-generated.
      * @param user User data.
      * @return Created User object.
      */
-    User createUser(User user);
+    UserDTO createUser(UserDTO user);
 
     /**
      * Updates user using given data.
      * @param user User data for update. Should have id set.
      * @return Updated User object.
      */
-    User updateUser(User user);
+    UserDTO updateUser(UserDTO user);
 
     /**
      * Deletes user by its id.
      * @param userId User id.
      * @return Flag that shows whether user has been deleted.
      */
-    boolean deleteUser(long userId);
+    void deleteUser(long userId);
+
+    TicketDTO getTicketById(long id);
 
     /**
      * Book ticket for a specified event on behalf of specified user.
@@ -112,31 +109,26 @@ public interface BookingFacade {
      * @return Booked ticket object.
      * @throws java.lang.IllegalStateException if this place has already been booked.
      */
-    Ticket bookTicket(long userId, long eventId, int place, Ticket.Category category);
+    TicketDTO bookTicket(long userId, long eventId, int place, Category category);
 
     /**
      * Get all booked tickets for specified user. Tickets should be sorted by event date in descending order.
      * @param user User
-     * @param pageSize Pagination param. Number of tickets to return on a page.
-     * @param pageNum Pagination param. Number of the page to return. Starts from 1.
      * @return List of Ticket objects.
      */
-    List<Ticket> getBookedTickets(User user, int pageSize, int pageNum);
+    List<TicketDTO> getBookedTickets(UserDTO user);
 
     /**
      * Get all booked tickets for specified event. Tickets should be sorted in by user email in ascending order.
      * @param event Event
-     * @param pageSize Pagination param. Number of tickets to return on a page.
-     * @param pageNum Pagination param. Number of the page to return. Starts from 1.
      * @return List of Ticket objects.
      */
-    List<Ticket> getBookedTickets(Event event, int pageSize, int pageNum);
+    List<TicketDTO> getBookedTickets(EventDTO event);
 
     /**
      * Cancel ticket with a specified id.
      * @param ticketId Ticket id.
      * @return Flag whether anything has been canceled.
      */
-    boolean cancelTicket(long ticketId);
-
+    void cancelTicket(long ticketId);
 }

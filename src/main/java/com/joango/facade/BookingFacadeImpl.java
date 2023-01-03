@@ -1,19 +1,38 @@
 package com.joango.facade;
 
+import com.joango.exception.EventNotFoundException;
+import com.joango.exception.TicketNotFoundException;
+import com.joango.exception.UserNotFoundException;
+import com.joango.model.Category;
+import com.joango.model.DTO.EventDTO;
+import com.joango.model.DTO.TicketDTO;
+import com.joango.model.DTO.UserDTO;
 import com.joango.model.Event;
 import com.joango.model.Ticket;
 import com.joango.model.User;
 import com.joango.service.EventService;
 import com.joango.service.TicketService;
 import com.joango.service.UserService;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
+@Component
 public class BookingFacadeImpl implements BookingFacade {
 
+    private static final ModelMapper mapper = new ModelMapper();
+
+    @Autowired
     private UserService userService;
+
+    @Autowired
     private EventService eventService;
+
+    @Autowired
     private TicketService ticketService;
 
     public BookingFacadeImpl(
@@ -27,82 +46,113 @@ public class BookingFacadeImpl implements BookingFacade {
     }
 
     @Override
-    public Event getEventById(long eventId) {
-        return eventService.getEventById(eventId);
+    public EventDTO getEventById(long eventId) {
+        Event event = eventService.getEventById(eventId).orElseThrow(EventNotFoundException::new);
+        return mapper.map(event, EventDTO.class);
     }
 
     @Override
-    public List<Event> getEventsByTitle(String title, int pageSize, int pageNum) {
-        return eventService.getEventsByTitle(title, pageSize, pageNum);
+    public List<EventDTO> getEventsByTitle(String title) {
+        List<Event> events = eventService.getEventsByTitle(title);
+        return events.stream()
+            .map(event -> mapper.map(event, EventDTO.class))
+            .collect(Collectors.toList());
     }
 
     @Override
-    public List<Event> getEventsForDay(Date day, int pageSize, int pageNum) {
-        return eventService.getEventsForDay(day, pageSize, pageNum);
+    public List<EventDTO> getEventsForDay(Date day) {
+        return eventService.getEventsForDay(day).stream()
+            .map(event -> mapper.map(event, EventDTO.class))
+            .collect(Collectors.toList());
     }
 
     @Override
-    public Event createEvent(Event event) {
-        return eventService.createEvent(event);
+    public EventDTO createEvent(EventDTO eventDto) {
+        Event event = mapper.map(eventDto, Event.class);
+        Event newEvent = eventService.createEvent(event);
+        return mapper.map(newEvent, EventDTO.class);
     }
 
     @Override
-    public Event updateEvent(Event event) {
-        return eventService.updateEvent(event);
+    public EventDTO updateEvent(EventDTO eventDto) {
+        Event event = mapper.map(eventDto, Event.class);
+        Event eventUpdated = eventService.updateEvent(event);
+        return mapper.map(eventUpdated, EventDTO.class);
     }
 
     @Override
-    public boolean deleteEvent(long eventId) {
-        return eventService.deleteEvent(eventId);
+    public void deleteEvent(long eventId) {
+        eventService.deleteEvent(eventId);
     }
 
     @Override
-    public User getUserById(long userId) {
-        return userService.getUserById(userId);
+    public UserDTO getUserById(long userId) {
+        User user = userService.getUserById(userId).orElseThrow(UserNotFoundException::new);
+        return mapper.map(user, UserDTO.class);
     }
 
     @Override
-    public User getUserByEmail(String email) {
-        return userService.getUserByEmail(email);
+    public UserDTO getUserByEmail(String email) {
+        User user =  userService.getUserByEmail(email).orElseThrow(UserNotFoundException::new);
+        return mapper.map(user, UserDTO.class);
     }
 
     @Override
-    public List<User> getUsersByName(String name, int pageSize, int pageNum) {
-        return userService.getUsersByName(name, pageSize, pageNum);
+    public List<UserDTO> getUsersByName(String name) {
+        return userService.getUsersByName(name).stream()
+            .map(user -> mapper.map(user, UserDTO.class))
+            .collect(Collectors.toList());
     }
 
     @Override
-    public User createUser(User user) {
-        return userService.createUser(user);
+    public UserDTO createUser(UserDTO userDto) {
+        User user = mapper.map(userDto, User.class);
+        User newUser = userService.createUser(user);
+        return mapper.map(newUser, UserDTO.class);
     }
 
     @Override
-    public User updateUser(User user) {
-        return userService.updateUser(user);
+    public UserDTO updateUser(UserDTO userDto) {
+        User user = mapper.map(userDto, User.class);
+        User userUpdated = userService.updateUser(user);
+        return mapper.map(userUpdated, UserDTO.class);
     }
 
     @Override
-    public boolean deleteUser(long userId) {
-        return userService.deleteUser(userId);
+    public void deleteUser(long userId) {
+        userService.deleteUser(userId);
     }
 
     @Override
-    public Ticket bookTicket(long userId, long eventId, int place, Ticket.Category category) {
-        return ticketService.bookTicket(userId, eventId, place, category);
+    public TicketDTO getTicketById(long id){
+        Ticket ticket = ticketService.getTicketById(id).orElseThrow(TicketNotFoundException::new);
+        return mapper.map(ticket, TicketDTO.class);
     }
 
     @Override
-    public List<Ticket> getBookedTickets(User user, int pageSize, int pageNum) {
-        return ticketService.getBookedTickets(user, pageSize, pageNum);
+    public TicketDTO bookTicket(long userId, long eventId, int place, Category category) {
+        Ticket newTicket = ticketService.bookTicket(userId, eventId, place, category);
+        return mapper.map(newTicket, TicketDTO.class);
     }
 
     @Override
-    public List<Ticket> getBookedTickets(Event event, int pageSize, int pageNum) {
-        return ticketService.getBookedTickets(event, pageSize, pageNum);
+    public List<TicketDTO> getBookedTickets(UserDTO userDto) {
+        User user = mapper.map(userDto, User.class);
+        return ticketService.getBookedTickets(user).stream()
+            .map(ticket -> mapper.map(ticket, TicketDTO.class))
+            .collect(Collectors.toList());
     }
 
     @Override
-    public boolean cancelTicket(long ticketId) {
-        return ticketService.cancelTicket(ticketId);
+    public List<TicketDTO> getBookedTickets(EventDTO eventDto) {
+        Event event = mapper.map(eventDto, Event.class);
+        return ticketService.getBookedTickets(event).stream()
+            .map(ticket -> mapper.map(ticket, TicketDTO.class))
+            .collect(Collectors.toList());
+    }
+
+    @Override
+    public void cancelTicket(long ticketId) {
+        ticketService.cancelTicket(ticketId);
     }
 }
