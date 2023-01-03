@@ -1,24 +1,37 @@
 package com.joango.model;
 
-/**
- * Created by maksym_govorischev.
- */
-public interface Ticket {
-    public enum Category {STANDARD, PREMIUM, BAR}
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-    /**
-     * Ticket Id. UNIQUE.
-     * @return Ticket Id.
-     */
-    long getId();
-    void setId(long id);
-    long getEventId();
-    void setEventId(long eventId);
-    long getUserId();
-    void setUserId(long userId);
-    Category getCategory();
-    void setCategory(Category category);
-    int getPlace();
-    void setPlace(int place);
+import javax.persistence.*;
 
+@Data
+@Entity
+@Table(name = "TICKET")
+@NoArgsConstructor
+public class Ticket {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private Long id;
+
+    @Column(name = "EVENT_ID")
+    private Long eventId;
+
+    @Column(name = "USER_ID")
+    private Long userId;
+
+    @Column(name = "CATEGORY")
+    @Enumerated(EnumType.STRING)
+    private Category category;
+
+    @Column(name = "PLACE")
+    private Integer place;
+
+    public Ticket(long userId, long eventId, int place, Category category) {
+        this.userId = userId;
+        this.eventId = eventId;
+        this.place = place;
+        this.category = category;
+    }
 }
