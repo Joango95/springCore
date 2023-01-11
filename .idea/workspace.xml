@@ -5,23 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d2e0331e-e8b5-4ec1-894b-cd44470edcb9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/joango/exception/EventNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/joango/exception/TicketNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/joango/exception/UserNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/joango/model/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/joango/model/DTO/EventDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/joango/model/DTO/TicketDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/joango/model/DTO/UserDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/joango/BookingServiceIntegrationTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/application-test.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/data-integration-testing.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -29,40 +12,47 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/demo/DemoApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/facade/BookingFacade.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/Event.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/Ticket$Category.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/Ticket.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/joango/DAO/EventDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/joango/DAO/TicketDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/joango/DAO/UserDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/joango/facade/BookingFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/joango/facade/BookingFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/joango/facade/BookingFacadeImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/joango/facade/BookingFacadeImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/joango/model/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/joango/model/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/joango/model/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/joango/model/Ticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/joango/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/joango/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/joango/repository/eventRepository/EventRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/joango/repository/EventRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/joango/repository/eventRepository/EventStorage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/joango/repository/ticketRepository/TicketRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/joango/repository/TicketRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/joango/repository/ticketRepository/TicketStorage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/joango/repository/userRepository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/joango/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/joango/repository/userRepository/UserStorage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/joango/service/EventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/joango/service/EventService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/joango/service/TicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/joango/service/TicketService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/joango/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/joango/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/joango/storage/EventMapStorage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/joango/storage/TicketMapStorage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/joango/storage/UserMapStorage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/joango/Application.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/joango/exception/EventNotFoundException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/joango/exception/TicketNotFoundException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/joango/exception/UserNotFoundException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/joango/facade/BookingFacade.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/joango/facade/BookingFacadeImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/joango/model/Category.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/joango/model/DTO/EventDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/joango/model/DTO/TicketDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/joango/model/DTO/UserDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/joango/model/Event.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/joango/model/Ticket.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/joango/model/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/joango/repository/EventRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/joango/repository/TicketRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/joango/repository/UserRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/joango/service/EventService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/joango/service/TicketService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/joango/service/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/joango/BookingServiceIntegrationTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/joango/DemoApplicationTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/com.joango.BookingServiceIntegrationTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/base-style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/js/report.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/com.joango.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/test/application-test.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/test/data-integration-testing.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-com.joango.BookingServiceIntegrationTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +81,12 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="demo" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="demo" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -146,7 +142,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
     <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
   </component>
@@ -166,7 +162,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.BookingServiceIntegrationTest">
+  <component name="RunManager" selected="Gradle.core [build]">
     <configuration name="BookingServiceIntegrationTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -209,48 +205,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="BookingServiceIntegrationTest.getEventById" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.joango.BookingServiceIntegrationTest.getEventById&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="BookingServiceIntegrationTest.getTicketById" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.joango.BookingServiceIntegrationTest.getTicketById&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="BookingServiceIntegrationTest.getUserByIdException" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -272,13 +226,55 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="core [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="core [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.core [build]" />
+        <item itemvalue="Gradle.core [clean]" />
         <item itemvalue="Gradle.BookingServiceIntegrationTest" />
         <item itemvalue="Gradle.BookingServiceIntegrationTest.getUserByIdException" />
         <item itemvalue="Gradle.BookingServiceIntegrationTest.deleteUser" />
-        <item itemvalue="Gradle.BookingServiceIntegrationTest.getEventById" />
-        <item itemvalue="Gradle.BookingServiceIntegrationTest.getTicketById" />
       </list>
     </recent_temporary>
   </component>
