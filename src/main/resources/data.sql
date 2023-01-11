@@ -8,9 +8,9 @@ VALUES
   ('Scarlett Hood','taciti@protonmail.com'),
   ('Sage Conrad','parturient.montes.nascetur@aol.net'),
   ('Jaden Harrison','tellus.aenean@outlook.couk'),
-  ('Kameko Camacho','enim.consequat@hotmail.edu'),
+  ('Lewis Burton','enim.consequat@hotmail.edu'),
   ('Harlan Jackson','lorem@protonmail.com'),
-  ('Branden Frye','pede.malesuada.vel@icloud.couk'),
+  ('Lewis Burton','pede.malesuada.vel@icloud.couk'),
   ('Xantha Buck','maecenas@google.ca'),
   ('Oleg Galloway','augue@hotmail.ca');
 INSERT INTO `USER` (`name`,`email`)
