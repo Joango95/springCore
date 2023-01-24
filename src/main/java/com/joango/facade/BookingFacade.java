@@ -111,19 +111,21 @@ public interface BookingFacade {
      */
     TicketDTO bookTicket(long userId, long eventId, int place, Category category);
 
+    TicketDTO bookTicket(TicketDTO ticket);
+
     /**
      * Get all booked tickets for specified user. Tickets should be sorted by event date in descending order.
      * @param user User
      * @return List of Ticket objects.
      */
-    List<TicketDTO> getBookedTickets(UserDTO user);
+    List<TicketDTO> getBookedTicketsByUserId(Long userId);
 
     /**
      * Get all booked tickets for specified event. Tickets should be sorted in by user email in ascending order.
      * @param event Event
      * @return List of Ticket objects.
      */
-    List<TicketDTO> getBookedTickets(EventDTO event);
+    List<TicketDTO> getBookedTicketsByEventId(Long eventId);
 
     /**
      * Cancel ticket with a specified id.
