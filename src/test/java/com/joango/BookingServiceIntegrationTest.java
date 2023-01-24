@@ -165,8 +165,7 @@ public class BookingServiceIntegrationTest {
     @Test
     @DisplayName("Should get a list of tickets by user")
     void getTicketsByUser() {
-        UserDTO user = bookingFacade.getUserById(1);
-        List<TicketDTO> tickets = bookingFacade.getBookedTickets(user);
+        List<TicketDTO> tickets = bookingFacade.getBookedTicketsByUserId(1l);
         tickets.stream().forEach(ticket -> {
             assertEquals(1, ticket.getUserId());
         });
@@ -175,8 +174,7 @@ public class BookingServiceIntegrationTest {
     @Test
     @DisplayName("Should get a list of tickets by event")
     void getTicketsByEvent() {
-        EventDTO event = bookingFacade.getEventById(1);
-        List<TicketDTO> tickets = bookingFacade.getBookedTickets(event);
+        List<TicketDTO> tickets = bookingFacade.getBookedTicketsByEventId(1l);
         tickets.stream().forEach(ticket -> {
             assertEquals(1, ticket.getEventId());
         });
@@ -193,7 +191,7 @@ public class BookingServiceIntegrationTest {
     void bookTicket() {
         TicketDTO ticket = bookingFacade.bookTicket(1l, 4l, 4, Category.PREMIUM);
         TicketDTO createdTicket = bookingFacade.getTicketById(ticket.getId());
-        List<TicketDTO> userTickets = bookingFacade.getBookedTickets(new UserDTO(1l));
+        List<TicketDTO> userTickets = bookingFacade.getBookedTicketsByUserId(1L);
         assertEquals(4l, ticket.getEventId());
         assertEquals(1l, ticket.getUserId());
         assertEquals(4, ticket.getPlace());

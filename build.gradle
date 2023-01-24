@@ -29,6 +29,9 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.kafka:spring-kafka-test'
+	implementation 'org.xhtmlrenderer:flying-saucer-pdf:9.1.20'
+	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.14.1'
+	implementation 'javax.xml.bind:jaxb-api:2.3.0'
 }
 
 tasks.named('test') {

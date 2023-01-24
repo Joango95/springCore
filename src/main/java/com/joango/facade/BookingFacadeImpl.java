@@ -136,16 +136,23 @@ public class BookingFacadeImpl implements BookingFacade {
     }
 
     @Override
-    public List<TicketDTO> getBookedTickets(UserDTO userDto) {
-        User user = mapper.map(userDto, User.class);
+    public TicketDTO bookTicket(TicketDTO ticketDto) {
+        Ticket ticket = mapper.map(ticketDto, Ticket.class);
+        Ticket newTicket = ticketService.bookTicket(ticket);
+        return mapper.map(newTicket, TicketDTO.class);
+    }
+
+    @Override
+    public List<TicketDTO> getBookedTicketsByUserId(Long userId) {
+        User user = userService.getUserById(userId).get();
         return ticketService.getBookedTickets(user).stream()
             .map(ticket -> mapper.map(ticket, TicketDTO.class))
             .collect(Collectors.toList());
     }
 
     @Override
-    public List<TicketDTO> getBookedTickets(EventDTO eventDto) {
-        Event event = mapper.map(eventDto, Event.class);
+    public List<TicketDTO> getBookedTicketsByEventId(Long eventId) {
+        Event event = eventService.getEventById(eventId).get();
         return ticketService.getBookedTickets(event).stream()
             .map(ticket -> mapper.map(ticket, TicketDTO.class))
             .collect(Collectors.toList());

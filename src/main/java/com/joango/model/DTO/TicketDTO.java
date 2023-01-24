@@ -4,8 +4,11 @@ import com.joango.model.Category;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 @Data
 @NoArgsConstructor
+@XmlRootElement
 public class TicketDTO {
 
     private Long id;

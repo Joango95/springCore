@@ -26,6 +26,10 @@ public class TicketService {
       return ticketRepository.save(newTicket);
    }
 
+   public Ticket bookTicket(Ticket ticket){
+      return ticketRepository.save(ticket);
+   }
+
    public List<Ticket> getBookedTickets(User user){
       return ticketRepository.getTicketsByUserId(user.getId());
    }
