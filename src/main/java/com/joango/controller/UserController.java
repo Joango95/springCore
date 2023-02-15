@@ -17,38 +17,41 @@ public class UserController {
     private BookingFacade bookingFacade;
 
     @GetMapping("/{id}")
-    public String getUserById(@PathVariable(value = "id") long id, Model model) {
+    public String getUserById(@PathVariable long id, Model model) {
             UserDTO user = bookingFacade.getUserById(id);
             model.addAttribute("users", user);
             return "users";
     }
 
     @GetMapping("/email/{email}")
-    public String getUserByEmail(@PathVariable(value = "email") String email, Model model) {
+    public String getUserByEmail(@PathVariable String email, Model model) {
         UserDTO user = bookingFacade.getUserByEmail(email);
         model.addAttribute("users", user);
         return "users";
     }
 
     @GetMapping("/name/{name}")
-    public String getUsersByName(@PathVariable(value = "name") String name, Model model) {
+    public String getUsersByName(@PathVariable String name, Model model) {
         List<UserDTO> users = bookingFacade.getUsersByName(name);
         model.addAttribute("users", users);
         return "users";
     }
 
     @PostMapping()
-    public UserDTO createUser(@RequestBody UserDTO user, Model model) {
+    @ResponseBody
+    public UserDTO createUser(@RequestBody UserDTO user) {
         return bookingFacade.createUser(user);
     }
 
-    @PostMapping("/update")
+    @PutMapping
+    @ResponseBody
     public UserDTO updateUser(@RequestBody UserDTO user, Model model) {
         return bookingFacade.updateUser(user);
     }
 
-    @PostMapping("/delete/{id}")
-    public Boolean deleteUser(@PathVariable(value = "id")Long userId, Model model) {
+    @DeleteMapping("/{id}")
+    @ResponseBody
+    public Boolean deleteUser(@PathVariable long userId, Model model) {
         bookingFacade.deleteUser(userId);
         return true;
     }

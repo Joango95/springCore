@@ -20,13 +20,13 @@ public class TicketController {
     private BookingFacade bookingFacade;
 
     @GetMapping("/{id}")
-    public String getTicketById(@PathVariable(value = "id") long id, Model model) {
+    public String getTicketById(@PathVariable long id, Model model) {
         TicketDTO ticket = bookingFacade.getTicketById(id);
         model.addAttribute("tickets", ticket);
         return "tickets";
     }
 
-    @PostMapping("/ticket/")
+    @PostMapping()
     public String bookTicket(
         @RequestParam(name = "userId") long userId,
         @RequestParam(name = "eventId") long eventId,
@@ -65,7 +65,7 @@ public class TicketController {
 
     @GetMapping("/userId/{userId}")
     public String getBookedTicketsByUserId(
-        @PathVariable(name = "userId") long userId,
+        @PathVariable long userId,
         Model model
     ) {
         List<TicketDTO> tickets = bookingFacade.getBookedTicketsByUserId(userId);
@@ -75,7 +75,7 @@ public class TicketController {
 
     @GetMapping("/eventId/{eventId}")
     public String getBookedTicketsByEventId(
-        @PathVariable(name = "eventId") long eventId,
+        @PathVariable long eventId,
         Model model
     ) {
         List<TicketDTO> tickets = bookingFacade.getBookedTicketsByEventId(eventId);
@@ -83,12 +83,11 @@ public class TicketController {
         return "tickets";
     }
 
-    @PostMapping("/cancelTicket/{ticketId}")
-    public String getBookedTicketsByTicketId(
-        @PathVariable(name = "eventId") long ticketId,
-        Model model
+    @GetMapping("/cancelTicket/{ticketId}")
+    public Boolean deleteTicketByTicketId(
+        @PathVariable long ticketId
     ) {
         bookingFacade.cancelTicket(ticketId);
-        return "tickets";
+        return true;
     }
 }

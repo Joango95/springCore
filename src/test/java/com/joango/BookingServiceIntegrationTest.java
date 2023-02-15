@@ -1,8 +1,10 @@
 package com.joango;
 
 import com.joango.exception.EventNotFoundException;
+import com.joango.exception.InsufficientFoundsException;
 import com.joango.exception.TicketNotFoundException;
 import com.joango.facade.BookingFacade;
+import com.joango.facade.UserAccountFacade;
 import com.joango.model.Category;
 import com.joango.model.DTO.EventDTO;
 import com.joango.model.DTO.TicketDTO;
@@ -28,6 +30,9 @@ public class BookingServiceIntegrationTest {
     @Autowired
     BookingFacade bookingFacade;
 
+    @Autowired
+    UserAccountFacade userAccountFacade;
+
     @Test
     @DisplayName("Should get a user by Id")
     void getUserById() {
@@ -38,7 +43,7 @@ public class BookingServiceIntegrationTest {
     @Test
     @DisplayName("Should throw exception when user not found by Id")
     void getUserByIdException() {
-        assertThrows(UserNotFoundException.class, () -> bookingFacade.getUserById(348l));
+        assertThrows(UserNotFoundException.class, () -> bookingFacade.getUserById(348L));
     }
 
     @Test
@@ -58,9 +63,7 @@ public class BookingServiceIntegrationTest {
     @DisplayName("Should get a list of users by Name")
     void getUsersByName() {
         List<UserDTO> users = bookingFacade.getUsersByName("Lewis Burton");
-        users.stream().forEach(user -> {
-            assertEquals("Lewis Burton", user.getName());
-        });
+        users.forEach(user -> assertEquals("Lewis Burton", user.getName()));
     }
 
     @Test
@@ -102,25 +105,21 @@ public class BookingServiceIntegrationTest {
     @Test
     @DisplayName("Should throw exception when event not found by Id")
     void getEventByIdException() {
-        assertThrows(EventNotFoundException.class, () -> bookingFacade.getEventById(348l));
+        assertThrows(EventNotFoundException.class, () -> bookingFacade.getEventById(348L));
     }
 
     @Test
     @DisplayName("Should get a list of event by title")
     void getEventsByTitle() {
         List<EventDTO> events = bookingFacade.getEventsByTitle("posuere, enim");
-        events.stream().forEach(event -> {
-            assertEquals("posuere, enim", event.getTitle());
-        });
+        events.forEach(event -> assertEquals("posuere, enim", event.getTitle()));
     }
 
     @Test
     @DisplayName("Should get a list of event by day")
     void getEventsByDay() {
         List<EventDTO> events = bookingFacade.getEventsForDay(java.sql.Date.valueOf("2023-08-10"));
-        events.stream().forEach(event -> {
-            assertEquals(java.sql.Date.valueOf("2023-08-10"), event.getDate());
-        });
+        events.forEach(event -> assertEquals(java.sql.Date.valueOf("2023-08-10"), event.getDate()));
     }
 
     @Test
@@ -128,7 +127,8 @@ public class BookingServiceIntegrationTest {
     void createEvent() {
         EventDTO event = new EventDTO(
             "World cup quarters",
-            java.sql.Date.valueOf("2023-10-10")
+            java.sql.Date.valueOf("2023-10-10"),
+            1234
         );
         EventDTO newEvent = bookingFacade.createEvent(event);
 
@@ -165,38 +165,65 @@ public class BookingServiceIntegrationTest {
     @Test
     @DisplayName("Should get a list of tickets by user")
     void getTicketsByUser() {
-        List<TicketDTO> tickets = bookingFacade.getBookedTicketsByUserId(1l);
-        tickets.stream().forEach(ticket -> {
-            assertEquals(1, ticket.getUserId());
-        });
+        List<TicketDTO> tickets = bookingFacade.getBookedTicketsByUserId(1L);
+        tickets.forEach(ticket -> assertEquals(1, ticket.getUserId()));
     }
 
     @Test
     @DisplayName("Should get a list of tickets by event")
     void getTicketsByEvent() {
-        List<TicketDTO> tickets = bookingFacade.getBookedTicketsByEventId(1l);
-        tickets.stream().forEach(ticket -> {
-            assertEquals(1, ticket.getEventId());
-        });
+        List<TicketDTO> tickets = bookingFacade.getBookedTicketsByEventId(1L);
+        tickets.forEach(ticket -> assertEquals(1, ticket.getEventId()));
     }
 
     @Test
     @DisplayName("Should throw exception when ticket not found by Id")
     void getTicketByIdException() {
-        assertThrows(TicketNotFoundException.class, () -> bookingFacade.getTicketById(348l));
+        assertThrows(TicketNotFoundException.class, () -> bookingFacade.getTicketById(348L));
     }
 
     @Test
-    @DisplayName("Should book a ticket")
-    void bookTicket() {
-        TicketDTO ticket = bookingFacade.bookTicket(1l, 4l, 4, Category.PREMIUM);
+    @DisplayName("Should book a ticket for a user with enough balance")
+    void bookTicketWithEnoughBalance() {
+        //given
+        Long userId = 4L;
+        Long eventId = 1L;
+        Integer place = 4;
+        Category category = Category.PREMIUM;
+        Integer previousUserBalance = userAccountFacade.getUserAccountByUserId(userId).get().getUserBalance();
+        Integer eventPrice = bookingFacade.getEventById(eventId).getTicketPrice();
+
+        //when
+
+        TicketDTO ticket = bookingFacade.bookTicket(userId, eventId, place, category);
         TicketDTO createdTicket = bookingFacade.getTicketById(ticket.getId());
-        List<TicketDTO> userTickets = bookingFacade.getBookedTicketsByUserId(1L);
-        assertEquals(4l, ticket.getEventId());
-        assertEquals(1l, ticket.getUserId());
-        assertEquals(4, ticket.getPlace());
-        assertEquals(Category.PREMIUM, ticket.getCategory());
+        List<TicketDTO> userTickets = bookingFacade.getBookedTicketsByUserId(userId);
+
+        //should
+        Integer newUserBalance = userAccountFacade.getUserAccountByUserId(userId).get().getUserBalance();
+
+        assertEquals(eventId, ticket.getEventId());
+        assertEquals(userId, ticket.getUserId());
+        assertEquals(place, ticket.getPlace());
+        assertEquals(category, ticket.getCategory());
+
         assertEquals(createdTicket.getId(), ticket.getId());
+
         assertTrue(userTickets.contains(ticket));
+
+        assertEquals(previousUserBalance - eventPrice, newUserBalance);
+    }
+
+    @Test
+    @DisplayName("Should book a ticket for a user with enough balance")
+    void bookTicketWithInsufficientFounds() {
+        //given
+        Long userId = 1L;
+        Long eventId = 4L;
+        Integer place = 4;
+        Category category = Category.PREMIUM;
+
+        //should
+        assertThrows(InsufficientFoundsException.class, () -> bookingFacade.bookTicket(userId, eventId, place, category));
     }
 }

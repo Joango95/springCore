@@ -13,6 +13,7 @@ VALUES
   ('Branden Frye','pede.malesuada.vel@icloud.couk'),
   ('Xantha Buck','maecenas@google.ca'),
   ('Oleg Galloway','augue@hotmail.ca');
+
 INSERT INTO `USER` (`name`,`email`)
 VALUES
   ('Alexandra Moreno','rutrum.urna.nec@icloud.com'),
@@ -26,6 +27,30 @@ VALUES
   ('Maxwell Hampton','sagittis.lobortis@icloud.edu'),
   ('Ayanna Marks','in.scelerisque@aol.net');
 
+  -----------------------USER ACCOUNT--------------------
+ INSERT INTO USER_ACCOUNT (user_balance, user_id)
+ VALUES
+    (10000,1),
+    (15000,2),
+    (20000,3),
+    (25000,4),
+    (30000,5),
+    (35000,6),
+    (40000,7),
+    (45000,8),
+    (50000,9),
+    (55000,10),
+    (60000,11),
+    (65000,12),
+    (70000,13),
+    (75000,14),
+    (80000,15),
+    (85000,16),
+    (90000,17),
+    (95000,18),
+    (85000,19),
+    (65000,20),
+    (15000,21);
 
   ----------------------- TICKET---------
 insert into ticket (event_id, user_id, category, place) values (3, 20, 'STANDARD', 39);
@@ -62,11 +87,11 @@ insert into ticket (event_id, user_id, category, place) values (4, 6, 'BAR', 34)
 
 ----------------- EVENT----------
 
-INSERT INTO `event` (`title`,`date`)
+INSERT INTO `event` (`title`,`date`, TICKET_PRICE)
 VALUES
-  ('posuere, enim','2023-08-10'),
-  ('posuere, enim','2023-07-10'),
-  ('tristique pharetra.','2022-08-10'),
-  ('odio semper','2023-05-06'),
-  ('arcu eu','2023-01-30'),
-  ('elit, pharetra','2023-08-10');
+  ('posuere, enim','2023-08-10', 5000),
+  ('posuere, enim','2023-07-10', 4000),
+  ('tristique pharetra.','2022-08-10', 3000),
+  ('odio semper','2023-05-06', 100000),
+  ('arcu eu','2023-01-30', 96000),
+  ('elit, pharetra','2023-08-10', 2000);

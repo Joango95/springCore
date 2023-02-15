@@ -15,8 +15,11 @@ public class EventDTO {
 
     private Date date;
 
-    public EventDTO(String title, Date date){
+    private Integer ticketPrice;
+
+    public EventDTO(String title, Date date, Integer ticketPrice){
         this.title = title;
         this.date = date;
+        this.ticketPrice = ticketPrice;
     }
 }

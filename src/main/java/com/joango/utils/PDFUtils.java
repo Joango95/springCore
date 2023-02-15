@@ -1,15 +1,9 @@
 package com.joango.utils;
 
-
-import com.joango.model.DTO.TicketDTO;
 import com.lowagie.text.DocumentException;
-import org.thymeleaf.context.Context;
-import org.thymeleaf.spring6.SpringTemplateEngine;
-import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
 import java.io.*;
-import java.util.List;
 
 public class PDFUtils {
 

@@ -19,39 +19,42 @@ public class EventController {
     private BookingFacade bookingFacade;
 
     @GetMapping("/{id}")
-    public String getEventById(@PathVariable(value = "id") long id, Model model) {
+    public String getEventById(@PathVariable long id, Model model) {
         EventDTO event = bookingFacade.getEventById(id);
         model.addAttribute("events", event);
         return "events";
     }
 
     @GetMapping("/title/{title}")
-    public String getEventsByTitle(@PathVariable(value = "title") String title, Model model) {
+    public String getEventsByTitle(@PathVariable String title, Model model) {
         List<EventDTO> events = bookingFacade.getEventsByTitle(title);
         model.addAttribute("events", events);
         return "events";
     }
 
     @GetMapping("/day/{day}")
-    public String getEventsForDay(@PathVariable(value = "day") long day, Model model) {
+    public String getEventsForDay(@PathVariable long day, Model model) {
         List<EventDTO> events = bookingFacade.getEventsForDay(Date.from(Instant.ofEpochMilli(day)));
         model.addAttribute("events", events);
         return "events";
     }
 
     @PostMapping()
+    @ResponseBody
     public EventDTO createEvent(@RequestBody EventDTO evenDto, Model model) {
         return bookingFacade.createEvent(evenDto);
     }
 
-    @PostMapping("/update")
+    @PutMapping()
+    @ResponseBody
     public EventDTO updateEvent(@RequestBody EventDTO evenDto, Model model) {
         return bookingFacade.updateEvent(evenDto);
     }
 
-    @PostMapping("/delete")
-    public Boolean deleteEvent(@RequestBody Long eventId, Model model) {
-        bookingFacade.deleteEvent(eventId);
+    @DeleteMapping("/{id}")
+    @ResponseBody
+    public Boolean deleteEvent(@PathVariable Long id, Model model) {
+        bookingFacade.deleteEvent(id);
         return true;
     }
 }

@@ -11,7 +11,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
     private Long id;
 
     @Column(name = "NAME")
@@ -19,4 +19,15 @@ public class User {
 
     @Column(name = "EMAIL")
     private String email;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private UserAccount userAccount;
+
+    public UserAccount getUserAccount(){
+        return userAccount;
+    }
+
+    public void setUserAccount(UserAccount userAccount){
+        this.userAccount = userAccount;
+    }
 }

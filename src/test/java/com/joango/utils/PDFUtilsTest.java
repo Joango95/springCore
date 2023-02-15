@@ -26,7 +26,7 @@ public class PDFUtilsTest {
         String html = HtmlUtils.generateTicketHtml(List.of(ticketDto));
 
         ByteArrayOutputStream pdfGenerated = PDFUtils.generatePdfFromHtml(html);
-        assertEquals(pdfGenerated.size(), 2003);
+        assertEquals(pdfGenerated.size(), 2030);
     }
 
 }

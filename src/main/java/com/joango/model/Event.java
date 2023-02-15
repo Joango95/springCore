@@ -20,4 +20,7 @@ public class Event {
 
     @Column(name = "DATE")
     private Date date;
+
+    @Column(name = "TICKET_PRICE")
+    private Integer ticketPrice;
 }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.joango.utils.HttpResponseUtilsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-02-15T19:49:05" hostname="Jorges-MacBook-Air.local" time="0.142">
+  <properties/>
+  <testcase name="Should generate http response for pdf" classname="com.joango.utils.HttpResponseUtilsTest" time="0.142"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

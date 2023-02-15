@@ -3,16 +3,16 @@ package com.joango.facade;
 import com.joango.exception.EventNotFoundException;
 import com.joango.exception.TicketNotFoundException;
 import com.joango.exception.UserNotFoundException;
-import com.joango.model.Category;
+import com.joango.model.*;
 import com.joango.model.DTO.EventDTO;
 import com.joango.model.DTO.TicketDTO;
 import com.joango.model.DTO.UserDTO;
-import com.joango.model.Event;
-import com.joango.model.Ticket;
-import com.joango.model.User;
 import com.joango.service.EventService;
 import com.joango.service.TicketService;
+import com.joango.service.UserAccountService;
 import com.joango.service.UserService;
+import com.joango.utils.UserAccountUtils;
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -34,6 +34,9 @@ public class BookingFacadeImpl implements BookingFacade {
 
     @Autowired
     private TicketService ticketService;
+
+    @Autowired
+    private UserAccountService userAccountService;
 
     public BookingFacadeImpl(
         UserService userService,
@@ -130,12 +133,24 @@ public class BookingFacadeImpl implements BookingFacade {
     }
 
     @Override
+    @Transactional
     public TicketDTO bookTicket(long userId, long eventId, int place, Category category) {
+        User user = userService.getUserById(userId).get();
+        UserAccount userAccount = user.getUserAccount();
+        Event event = eventService.getEventById(eventId).get();
+
+        UserAccountUtils.checkIfUserBalanceIsEnough(userAccount, event);
+
         Ticket newTicket = ticketService.bookTicket(userId, eventId, place, category);
+
+        userAccount.setUserBalance(userAccount.getUserBalance() - event.getTicketPrice());
+        userAccountService.updateUserAccount(userAccount);
+
         return mapper.map(newTicket, TicketDTO.class);
     }
 
     @Override
+    @Transactional
     public TicketDTO bookTicket(TicketDTO ticketDto) {
         Ticket ticket = mapper.map(ticketDto, Ticket.class);
         Ticket newTicket = ticketService.bookTicket(ticket);

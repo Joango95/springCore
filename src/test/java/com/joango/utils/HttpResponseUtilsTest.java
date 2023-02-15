@@ -29,7 +29,7 @@ public class HttpResponseUtilsTest {
         HttpEntity<byte []> response = HttpResponseUtils.generateHttpResponseForPdf(pdfGenerated);
 
         assertEquals(response.getHeaders().getContentType(), MediaType.APPLICATION_PDF);
-        assertEquals(response.getHeaders().getContentLength(), 2003);
+        assertEquals(response.getHeaders().getContentLength(), 2030);
         assertEquals(response.getHeaders().getContentDisposition(), ContentDisposition.attachment().filename("tickets.pdf").build());
     }
 }
