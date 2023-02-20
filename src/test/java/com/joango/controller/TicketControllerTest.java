@@ -1,5 +1,6 @@
 package com.joango.controller;
 
+import com.joango.model.Category;
 import com.joango.model.DTO.EventDTO;
 import com.joango.model.DTO.TicketDTO;
 import org.junit.jupiter.api.Test;
@@ -15,8 +16,7 @@ import org.springframework.util.MultiValueMapAdapter;
 import javax.print.attribute.standard.Media;
 import java.util.Map;
 
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.instanceOf;
+import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -65,6 +65,24 @@ public class TicketControllerTest {
             .andExpect(status().is2xxSuccessful())
             .andExpect(model().attribute("tickets", hasSize(3)))
             .andExpect(view().name("tickets"));
+    }
+
+    @Test
+    void testBookTicketsBatchShouldTransactionallyFailCorrectly() throws Exception {
+        mockMvc.perform(post("/ticket/batch")
+                .content("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                    "<tickets>\n" +
+                    "    <ticket eventId=\"1\" userId=\"4\" category=\"PREMIUM\" place=\"1\"/>\n" +
+                    "    <ticket eventId=\"1\" userId=\"5\" category=\"PREMIUM\" place=\"2\"/>\n" +
+                    "    <ticket eventId=\"123123234\" userId=\"1324132434\" category=\"PREMIUM\" place=\"3\"/>\n" +
+                    "</tickets>")
+                .contentType(MediaType.APPLICATION_XML)
+                .accept(MediaType.APPLICATION_XML)
+            )
+            .andExpect(status().is4xxClientError());
+
+        mockMvc.perform(get("/ticket/userId/{id}", 4))
+            .andExpect(model().attribute("tickets", not(hasItem(new TicketDTO(1L, 4L, Category.PREMIUM, 1)))));
     }
 
     @Test

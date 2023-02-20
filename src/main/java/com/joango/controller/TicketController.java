@@ -3,6 +3,7 @@ package com.joango.controller;
 import com.joango.facade.BookingFacade;
 import com.joango.model.Category;
 import com.joango.model.DTO.TicketDTO;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;

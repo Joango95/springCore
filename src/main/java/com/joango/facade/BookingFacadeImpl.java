@@ -153,6 +153,8 @@ public class BookingFacadeImpl implements BookingFacade {
     @Transactional
     public TicketDTO bookTicket(TicketDTO ticketDto) {
         Ticket ticket = mapper.map(ticketDto, Ticket.class);
+        eventService.getEventById(ticketDto.getEventId()).orElseThrow(EventNotFoundException::new);
+        userService.getUserById(ticketDto.getUserId()).orElseThrow(UserNotFoundException::new);
         Ticket newTicket = ticketService.bookTicket(ticket);
         return mapper.map(newTicket, TicketDTO.class);
     }
